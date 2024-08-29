@@ -78,7 +78,8 @@ public class String1
      * makeOutWord("[[]]", "word") → "[[word]]"
      */
     public String makeOutWord(String out, String word) {
-        return unimplemented;
+        String outString = out.substring(0,2)+word+out.substring(2);
+        return outString;
     }
 
     /*
@@ -89,6 +90,7 @@ public class String1
      * extraEnd("Hi") → "HiHiHi"
      */
     public String extraEnd(String str) {
+        String repStr = str.substring(0,1)
         return unimplemented;
     }
 
