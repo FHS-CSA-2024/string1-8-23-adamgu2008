@@ -39,7 +39,8 @@ public class String1
      *  helloName("X") → "Hello X!"
      */
     public String helloName(String name) {
-        return unimplemented;
+        String hello = ("hello "+name+"!");
+        return hello;
     }
 
     /*
@@ -50,7 +51,7 @@ public class String1
      * makeAbba("What", "Up") → "WhatUpUpWhat"
      */
     public String makeAbba(String a, String b) {
-        return unimplemented;
+        return a+b+b+a;
     }
 
     /*
@@ -62,7 +63,8 @@ public class String1
      * makeTags("cite", "Yay") → "<cite>Yay</cite>"
      */
     public String makeTags(String tag, String word) {
-        return unimplemented;
+        String tagger = "\""+tag+"\""+word+"\""+tag+"/\""
+        return tagger;
     }
 
     /*
