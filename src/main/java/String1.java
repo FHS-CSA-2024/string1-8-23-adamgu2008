@@ -63,7 +63,7 @@ public class String1
      * makeTags("cite", "Yay") → "<cite>Yay</cite>"
      */
     public String makeTags(String tag, String word) {
-        String tagger = "\""+tag+"\""+word+"\""+tag+"/\""
+        String tagger = "\""+tag+"\""+word+"\""+tag+"/\"";
         return tagger;
     }
 
@@ -90,8 +90,8 @@ public class String1
      * extraEnd("Hi") → "HiHiHi"
      */
     public String extraEnd(String str) {
-        String repStr = str.substring(0,1)
-        return unimplemented;
+        String lastChars = str.substring(str.length()-2);
+        return lastChars + lastChars + lastChars;
     }
 
     /*
@@ -104,17 +104,28 @@ public class String1
      * firstTwo("ab") → "ab"
      */
     public String firstTwo(String str) {
-        return unimplemented;
+        String firstTwoChars = "";
+        if(str.length() >= 2){
+            firstTwoChars = str.substring(0,2);
+        }
+        else if(str.length() == 1){
+            firstTwoChars = str.substring(0,1);
+        }
+        else{
+            firstTwoChars = "";
+        }
+        return firstTwoChars;
     }
 
     /*
-     * Given a string of even length, return the first half. So the string "WooHoo" yields "Woo".]
+     * Given a string of even length, return the first half. So the string "WooHoo" yields "Woo".
      * firstHalf("WooHoo") → "Woo"
      * firstHalf("HelloThere") → "Hello"
      * firstHalf("abcdef") → "abc"
      */
     public String firstHalf(String str) {
-        return unimplemented;
+        String output = str.substring(0, str.length()/2);
+        return output;
     }
 
     /*
@@ -125,7 +136,9 @@ public class String1
      * withoutEnd("coding") → "odin"
      */
     public String withoutEnd(String str) {
-        return unimplemented;
+        String noEnd = str.substring(0, str.length()-1);
+        String withoutEnds = noEnd.substring(1, noEnd.length());
+        return withoutEnds;
     }
 
     /*
@@ -137,7 +150,14 @@ public class String1
      * comboString("aaa", "b") → "baaab"
      */
     public String comboString(String a, String b) {
-        return unimplemented;
+        String output = "";
+        if(a.length() > b.length()){
+            output = b+a+b;
+        }
+        else{
+            output = a+b+a;
+        }
+        return output;
     }
 
     /*
@@ -148,6 +168,7 @@ public class String1
      * middleThree("solving") → "lvi"
      */
     public String middleThree(String str) {
+        
         return unimplemented;
     }
 
