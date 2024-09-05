@@ -39,7 +39,7 @@ public class String1
      *  helloName("X") → "Hello X!"
      */
     public String helloName(String name) {
-        String hello = ("hello "+name+"!");
+        String hello = ("Hello "+name+"!");
         return hello;
     }
 
@@ -63,7 +63,7 @@ public class String1
      * makeTags("cite", "Yay") → "<cite>Yay</cite>"
      */
     public String makeTags(String tag, String word) {
-        String tagger = "\""+tag+"\""+word+"\""+tag+"/\"";
+        String tagger = "<"+tag+">"+word+"</"+tag+">";
         return tagger;
     }
 
@@ -237,11 +237,22 @@ public class String1
      */
     public String conCat(String a, String b) {
         String output = "";
-        if(a.substring(a.length()-1,a.length()).equals(b.substring(0,1))){
-            output = a + b.substring(1,b.length());
+        if(a.length()>1 && b.length()>1){
+            if(a.substring(a.length()-1,a.length()).equals(b.substring(0,1))){
+                output = a + b.substring(1,b.length());
+            }
+            else{
+                output = a+b;
+            }
+        }
+        else if(a.length()>1 && b.length()<1){
+            output = a;
+        }
+        else if(a.length()<1 && b.length()>1){
+            output = b;
         }
         else{
-            output = a+b;
+            output = "";
         }
         return output;
     }
