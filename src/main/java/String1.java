@@ -1,342 +1,39 @@
-package src.main.java;
+import java.util.Scanner;
+import java.lang.Math;
 
-
-public class String1
-{
-    private String unimplemented = "UNIMPLEMENTED CODE";
-
+public class Program7Driver{
+    public double convert(int stanOld, int klevOld, int schruteOld) {
+        double total = schruteOld;
+        double newKlev = klevOld;
+        newKlev += (double) stanOld/12;
+        total += newKlev/20;
+        total *= 100;
+        //total = Math.ceil(total);
+        total /= 100;
+        return total;
+    }
+    
     public static void main(String[] args){
-        String1 s = new String1();
-        System.out.println(s.helloName("Bob"));
-        System.out.println(s.makeAbba("Hi", "Bye"));
-        System.out.println(s.makeTags("i", "Yay"));
-        System.out.println(s.makeOutWord("<<>>", "Yay"));
-        System.out.println(s.extraEnd("Hello"));
-        System.out.println(s.firstTwo("Hello"));
-        System.out.println(s.withoutEnd("Hello"));
-        System.out.println(s.comboString("hi", "Hello"));
-        System.out.println(s.middleThree("Candy"));
-        System.out.println(s.extraFront("Hello"));
-        System.out.println(s.left2("Hello"));
-        System.out.println(s.hasBad("badxx"));
-        System.out.println(s.conCat("abc", "cat"));
-        System.out.println(s.minCat("Hello", "Hi"));
-        System.out.println(s.withoutX("xHix"));
-        System.out.println(s.deFront("Hello"));
+        //scanners get input
+        Scanner scan1 = new Scanner(System.in);
+        System.out.println("Enter Schrute-bucks: ");
+        int schruteOld = scan1.nextInt();
+        Scanner scan2 = new Scanner(System.in);
+        System.out.println("Enter Klevins: ");
+        int klevOld = scan2.nextInt();
+        Scanner scan3 = new Scanner(System.in);
+        System.out.print("Enter Stanley-nickels: ");
+        int stanOld = scan3.nextInt();
+        
+        //convert
+        Program7 myTester = new Program7();
+        double totalVal = myTester.convert(stanOld, klevOld, schruteOld);
+        //print new value
+        System.out.print("New value: "+totalVal);
     }
-
-    public String1()
-    {
-
-    }
-
-    //ONLY EDIT BELOW HERE-------------------------------------------------------------------------
-
-    /*
-     * Given a string name, e.g. "Bob", return a greeting of the form "Hello Bob!".
-     *  helloName("Bob") → "Hello Bob!"
-     *  helloName("Alice") → "Hello Alice!"
-     *  helloName("X") → "Hello X!"
-     */
-    public String helloName(String name) {
-        String hello = ("Hello "+name+"!");
-        return hello;
-    }
-
-    /*
-     * Given two strings, a and b, return the result of putting them together in the order abba, 
-     * e.g. "Hi" and "Bye" returns "HiByeByeHi".
-     * makeAbba("Hi", "Bye") → "HiByeByeHi"
-     * makeAbba("Yo", "Alice") → "YoAliceAliceYo"
-     * makeAbba("What", "Up") → "WhatUpUpWhat"
-     */
-    public String makeAbba(String a, String b) {
-        return a+b+b+a;
-    }
-
-    /*
-     * The web is built with HTML strings like "<i>Yay</i>" which draws Yay as italic text. 
-     * In this example, the "i" tag makes <i> and </i> which surround the word "Yay". 
-     * Given tag and word strings, create the HTML string with tags around the word, e.g. "<i>Yay</i>".
-     * makeTags("i", "Yay") → "<i>Yay</i>"
-     * makeTags("i", "Hello") → "<i>Hello</i>"
-     * makeTags("cite", "Yay") → "<cite>Yay</cite>"
-     */
-    public String makeTags(String tag, String word) {
-        String tagger = "<"+tag+">"+word+"</"+tag+">";
-        return tagger;
-    }
-
-    /*
-     * Given an "out" string length 4, such as "<<>>", and a word, 
-     *      return a new string where the word is in the middle of the out string, 
-     *      e.g. "<<word>>". 
-     * Note: use str.substring(i, j) to extract the String starting at index i and going up to but 
-     * not including index j.
-     * makeOutWord("<<>>", "Yay") → "<<Yay>>"
-     * makeOutWord("<<>>", "WooHoo") → "<<WooHoo>>"
-     * makeOutWord("[[]]", "word") → "[[word]]"
-     */
-    public String makeOutWord(String out, String word) {
-        String outString = out.substring(0,2)+word+out.substring(2);
-        return outString;
-    }
-
-    /*
-     * Given a string, return a new string made of 3 copies of the last 2 chars of the original string. 
-     * The string length will be at least 2.
-     * extraEnd("Hello") → "lololo"
-     * extraEnd("ab") → "ababab"
-     * extraEnd("Hi") → "HiHiHi"
-     */
-    public String extraEnd(String str) {
-        String lastChars = str.substring(str.length()-2);
-        return lastChars + lastChars + lastChars;
-    }
-
-    /*
-     * Given a string, return the string made of its first two chars, so the String "Hello" yields "He". 
-     * If the string is shorter than length 2, return whatever there is, 
-     * so "X" yields "X", and the empty string "" yields the empty string "". 
-     * Note that str.length() returns the length of a string.
-     * firstTwo("Hello") → "He"
-     * firstTwo("abcdefg") → "ab"
-     * firstTwo("ab") → "ab"
-     */
-    public String firstTwo(String str) {
-        String firstTwoChars = "";
-        if(str.length() >= 2){
-            firstTwoChars = str.substring(0,2);
-        }
-        else if(str.length() == 1){
-            firstTwoChars = str.substring(0,1);
-        }
-        else{
-            firstTwoChars = "";
-        }
-        return firstTwoChars;
-    }
-
-    /*
-     * Given a string of even length, return the first half. So the string "WooHoo" yields "Woo".
-     * firstHalf("WooHoo") → "Woo"
-     * firstHalf("HelloThere") → "Hello"
-     * firstHalf("abcdef") → "abc"
-     */
-    public String firstHalf(String str) {
-        String output = str.substring(0, str.length()/2);
-        return output;
-    }
-
-    /*
-     * Given a string, return a version without the first and last char, so "Hello" yields "ell". 
-     * The string length will be at least 2.
-     * withoutEnd("Hello") → "ell"
-     * withoutEnd("java") → "av"
-     * withoutEnd("coding") → "odin"
-     */
-    public String withoutEnd(String str) {
-        String noEnd = str.substring(0, str.length()-1);
-        String withoutEnds = noEnd.substring(1, noEnd.length());
-        return withoutEnds;
-    }
-
-    /*
-     * Given 2 strings, a and b, return a string of the form short+long+short, with the 
-     * shorter string on the outside and the longer string on the inside. 
-     * The strings will not be the same length, but they may be empty (length 0).
-     * comboString("hi", "Hello") → "hiHellohi"
-     * comboString("Hello", "hi") → "hiHellohi"
-     * comboString("aaa", "b") → "baaab"
-     */
-    public String comboString(String a, String b) {
-        String output = "";
-        if(a.length() > b.length()){
-            output = b+a+b;
-        }
-        else{
-            output = a+b+a;
-        }
-        return output;
-    }
-
-    /*
-     * Given a string of odd length, return the string length 3 from its middle, so "Candy" yields "and". 
-     * The string length will be at least 3.
-     * middleThree("Candy") → "and"
-     * middleThree("and") → "and"
-     * middleThree("solving") → "lvi"
-     */
-    public String middleThree(String str) {
-        int midString = str.length()/2;
-        String output = str.substring(midString-1, midString+2);
-
-        return output;
-    }
-
-    /*
-     * Given a string, return a new string made of 3 copies of the first 2 chars of the original string. 
-     * The string may be any length. If there are fewer than 2 chars, use whatever is there.
-     * extraFront("Hello") → "HeHeHe"
-     * extraFront("ab") → "ababab"
-     * extraFront("H") → "HHH"
-     */
-    public String extraFront(String str) {
-        String firstTwoChars = "";
-        if(str.length() >= 2){
-            firstTwoChars = str.substring(0,2);
-        }
-        else if(str.length() == 1){
-            firstTwoChars = str.substring(0,1);
-        }
-        else{
-            firstTwoChars = "";
-        }
-        return firstTwoChars+firstTwoChars+firstTwoChars;
-    }
-
-    /*
-     * Given a string, return a "rotated left 2" version where the first 2 chars are moved to the end. 
-     * The string length will be at least 2.
-     * left2("Hello") → "lloHe"
-     * left2("java") → "vaja"
-     * left2("Hi") → "Hi"
-     */
-    public String left2(String str) {
-        String firstTwoChars = str.substring(0,2);
-        String noFirstTwoChars = str.substring(2,str.length());
-        return noFirstTwoChars + firstTwoChars;
-    }
-
-    /*
-     * Given a string, return true if "bad" appears starting at index 0 or 1 in the string, 
-     * such as with "badxxx" or "xbadxx" but not "xxbadxx". The string may be any length, including 0. 
-     * Note: use .equals() to compare 2 strings.
-     * hasBad("badxx") → true
-     * hasBad("xbadxx") → true
-     * hasBad("xxbadxx") → false
-     */
-    public boolean hasBad(String str) {
-        boolean output = false;
-        if(str.substring(0,3).equals("bad") || str.substring(1,4).equals("bad")){
-            output = true;
-        }
-        else{
-            output = false;
-        }
-        return output;
-    }
-
-    /*
-     * Given two strings, append them together (known as "concatenation") and return the result. 
-     * However, if the concatenation creates a double-char, then omit one of the chars, 
-     * 	so "abc" and "cat" yields "abcat".
-     * conCat("abc", "cat") → "abcat"
-     * conCat("dog", "cat") → "dogcat"
-     * conCat("abc", "") → "abc"
-     */
-    public String conCat(String a, String b) {
-        String output = "";
-        if(a.length()>1 && b.length()>1){
-            if(a.substring(a.length()-1,a.length()).equals(b.substring(0,1))){
-                output = a + b.substring(1,b.length());
-            }
-            else{
-                output = a+b;
-            }
-        }
-        else if(a.length()>1 && b.length()<1){
-            output = a;
-        }
-        else if(a.length()<1 && b.length()>1){
-            output = b;
-        }
-        else{
-            output = "";
-        }
-        return output;
-    }
-
-    /*
-     *Given two strings, append them together (known as "concatenation") and return the result. 
-     *However, if the strings are different lengths, omit chars from the longer string 
-     *	so it is the same length as the shorter string. 
-     *So "Hello" and "Hi" yield "loHi". 
-     *The strings may be any length.
-     *minCat("Hello", "Hi") → "loHi"
-     *minCat("Hello", "java") → "ellojava"
-     *minCat("java", "Hello") → "javaello"
-     */
-    public String minCat(String a, String b) {
-        String output = "";
-        if(a.length() > b.length()){
-            output = a.substring(a.length()-b.length(), a.length()) + b;
-        }
-        else if(a.length() < b.length()){
-            output = a + b.substring(b.length()-a.length(), b.length());
-        }
-        else{
-            output = a+b;
-        }
-        return output;
-    }
-
-    /*
-     * Given a string, if the first or last chars are 'x', return the string without those 'x' chars, 
-     * and otherwise return the string unchanged.
-     * withoutX("xHix") → "Hi"
-     * withoutX("xHi") → "Hi"
-     * withoutX("Hxix") → "Hxi"
-     */
-    public String withoutX(String str) {
-        String output = "";
-        if(str.substring(0,1).equals("x") && str.substring(str.length()-1,str.length()).equals("x")){
-            output = str.substring(1,str.length()-1);
-        }
-        else if(str.substring(0,1).equals("x") && !str.substring(str.length()-1,str.length()).equals("x")){
-            output = str.substring(1,str.length());
-        }
-        else if(!str.substring(0,1).equals("x") && str.substring(str.length()-1,str.length()).equals("x")){
-            output = str.substring(0,str.length()-1);
-        }
-        else{
-            output = str;
-        }
-        return output;
-    }
-
-    /*
-     * Given a string, return a version without the first 2 chars. 
-     * Except keep the first char if it is 'a' and keep the second char if it is 'b'. 
-     * The string may be any length. 
-     * Harder than it looks.
-     * deFront("Hello") → "llo"
-     * deFront("java") → "va"
-     * deFront("away") → "aay"
-     */
-    public String deFront(String str) {    
-        String output = "";
-        if(str.length()>1){
-            if(str.substring(0,1).equals("a") && str.substring(1,2).equals("b")){
-                output = str;
-            }
-            else if(str.substring(0,1).equals("a") && !str.substring(1,2).equals("b")){
-                output = "a" + str.substring(2,str.length());
-            }
-            else if(!str.substring(0,1).equals("a") && str.substring(1,2).equals("b")){
-                output = "b" + str.substring(2,str.length());
-            }
-            else{
-                output = str.substring(2,str.length());
-            }
-        }
-        else if(str.length() == 1 && (str.equals("a") || str.equals("b"))){
-            output = str;
-        }
-        else{
-            output = "";
-        }
-        return output;
-    }
-
 }
+
+/*
+ * 
+ * 
+ */
